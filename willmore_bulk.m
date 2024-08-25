@@ -35,7 +35,7 @@ else
      "M", "P", "velocity", "pressure", "p", "o", "r"); 
     geo = Geometry(M, P);
 end
-
+% mod
 %% main loop (not supposed to be modified)
 for t = (start + 1):p.T
     %%% incremental potential minimization
