@@ -17,7 +17,7 @@ if start == 0
     %%% parameters
     p.dt = 1e-2; % time 
     p.kappa = 1e-2; % bending
-    p.T = 3000; % total time (frames)
+    p.T = 2001; % total time (frames) CHANGED THE TIME
     p.lambda = 1e3; % area penalty
     p.alpha = 5e-1; p.amp = 1; p.type = "strainrot"; p.scale = 5;
     %%% optimizer
@@ -35,7 +35,7 @@ else
      "M", "P", "velocity", "pressure", "p", "o", "r"); 
     geo = Geometry(M, P);
 end
-% mod
+% mod 
 %% main loop (not supposed to be modified)
 for t = (start + 1):p.T
     %%% incremental potential minimization
