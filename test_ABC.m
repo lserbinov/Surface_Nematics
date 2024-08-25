@@ -11,11 +11,7 @@ z = linspace(-1, 1, 10);
 [x, y, z] = meshgrid(x, y, z);
 P = [x(:), y(:), z(:)];
 
-% r = linspace(-1, 1, 10);
-% t = linspace(-pi, pi , 10);
-% z = linspace(-1, 1, 10);
-% [r, t, z] = meshgrid(r, t, z);
-% P = [r(:), t(:), z(:)];
+% changed variables
 
 u = strain(P) + rot_shear(P);
 qvr(P, reshape(u, [], 3), 3);
