@@ -5,7 +5,7 @@ classdef Mesh
         n_f {mustBeNumeric};
         n_he {mustBeNumeric};
         
-        v_face {mustBeNumeric};
+        % v_face {mustBeNumeric};
         
         he_src {mustBeNumeric};
         he_dst {mustBeNumeric};
@@ -15,9 +15,10 @@ classdef Mesh
         he_flip {mustBeNumeric};
     end
     methods
-        function obj = Mesh(F, V)
+        function obj = Mesh(F)
             obj.F = F;
-            obj.n_v = size(V, 1);
+            % obj.n_v = size(V, 1); 
+            obj.n_v = length(unique(F));
             obj.n_f = size(F, 1); % number of faces
             obj.n_he = 3 * obj.n_f; % number of half-edges
             

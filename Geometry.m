@@ -35,7 +35,7 @@ classdef Geometry
     end
     methods
         function obj = Geometry(F, V)
-            obj.mesh = Mesh(F, V);
+            obj.mesh = Mesh(F);
             obj.V = V;
             obj.F = F;
 

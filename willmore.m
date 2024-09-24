@@ -1,6 +1,6 @@
 verbose = false;
 %%% directory
-dir = "./data/willmore/ellipsoid/"; 
+dir = "./data/willmore/"; 
 [status, msg, msgID] = mkdir(dir); 
 
 %% system init
@@ -8,7 +8,7 @@ dir = "./data/willmore/ellipsoid/";
 start = 0; 
 if start == 0
     %%% geometry
-    [P, M] = subdivided_sphere(4);
+    [P, M] = subdivided_sphere(2);
     P(:, 1) = P(:, 1) * 2;
     geo = Geometry(M, P);
     %%% parameters
@@ -44,7 +44,9 @@ for t = (start + 1):p.T
         expan = div * (P(:) - P0);
         %%% measure residual
         eps_f = norm_f(b, geo.v_area); eps_d = norm_d(expan, geo.f_area);
-        if verbose fprintf("t = %d, j = %d, eps_f = %0.4g, eps_d = %0.4g \n", t, j, eps_f, eps_d); end
+        if verbose 
+            fprintf("t = %d, j = %d, eps_f = %0.4g, eps_d = %0.4g \n", t, j, eps_f, eps_d); 
+        end
         %%% gradient descent/ascent
         P(:) = P(:) + o.h * ((preconditioner(geo, o.metric) + 1e-5 * sparse(eye(3*geo.mesh.n_v))) ...
                             \ (b - o.k * DTD * (P(:) - P0)));

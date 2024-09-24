@@ -1,14 +1,14 @@
-% verbose = false;
+verbose = false;
 %%% directory
-% dir = "./data/gut1/"; 
+dir = "./data/gut1/"; 
 [status, msg, msgID] = mkdir(dir); 
 
 %% system init
 %%% 0 for new simulation, otherwise continue from geo"start".mat
-% start = 0; 
+start = 0; 
 if start == 0
     %%% geometry
-    load("./assets/gut_smooth.mat")
+    % load("./assets/gut_smooth.mat")
     geo = Geometry(M, P);
     % p.rank = 1; % nematic init based on eigen rank
     %%% parameters
@@ -26,7 +26,7 @@ if start == 0
     %%% initialize
     velocity = zeros(size(P, 1) * 3, 1);
     pressure = zeros(size(M, 1), 1);
-    nematic = initialize_nematic(M, P, p.rank);
+    nematic = initialize_nematic(M, P, 2);
 else
     load(dir + sprintf("geo%d.mat", start), ...
      "M", "P", "velocity", "pressure", "nematic_", "p", "o", "r"); 
